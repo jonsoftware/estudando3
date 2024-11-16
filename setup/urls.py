@@ -16,7 +16,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from enter.views import exitListView, exitCreateView, exitUpdateView, exitDeleteView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('admin/', admin.site.urls),
+    path('', exitListView.as_view(), name='exit_list'),
+    path('create/', exitCreateView.as_view(), name='exit_create'),
+    path('update/<int:pk>/', exitUpdateView.as_view(), name='exit_update'),
+    path('delete/<int:pk>/', exitDeleteView.as_view(), name='exit_delete')
+
 ]

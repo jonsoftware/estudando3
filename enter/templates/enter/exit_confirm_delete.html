@@ -1,0 +1,102 @@
+<<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deletar Tarefa</title>
+    <style>
+        /* Estilo geral */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        /* Cabeçalho */
+        h1 {
+            text-align: center;
+            color: #e74c3c;
+            margin-top: 20px;
+            font-size: 24px;
+        }
+
+        /* Parágrafo de confirmação */
+        p {
+            text-align: center;
+            font-size: 18px;
+            margin: 20px 0;
+            color: #333;
+        }
+
+        /* Formulário */
+        form {
+            max-width: 400px;
+            margin: 20px auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        /* Botões */
+        form button, a.cancelar {
+            display: inline-block;
+            width: 45%; /* Botões lado a lado */
+            padding: 12px;
+            margin-top: 20px;
+            text-align: center;
+            background-color: #e74c3c;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        /* Hover dos botões */
+        form button:hover {
+            background-color: #c0392b;
+        }
+
+        a.cancelar {
+            background-color: #3498db;
+        }
+
+        a.cancelar:hover {
+            background-color: #2980b9;
+        }
+
+        /* Responsividade */
+        @media (max-width: 600px) {
+            form {
+                width: 90%;
+            }
+
+            form button, a.cancelar {
+                width: 100%;
+                margin-top: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Deletar Tarefa</h1>
+    <p>Você tem certeza que deseja deletar a tarefa?</p>
+    <form method="POST">
+        {% csrf_token %}
+        <button type="submit">Deletar</button>
+        <a href="{% url 'exit_list' %}" class="cancelar">Cancelar</a>
+    </form>
+    
+
+</body>
+</html>
+

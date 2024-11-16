@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Tarefas</title>
+    <style>
+        /* Estilo geral */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        /* Cabeçalho */
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-top: 20px;
+        }
+
+        /* Lista de tarefas */
+        ul {
+            list-style-type: none;
+            padding: 0;
+            max-width: 600px;
+            margin: 20px auto;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        ul li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 15px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        ul li:last-child {
+            border-bottom: none;
+        }
+
+        /* Links de ação */
+        ul li a {
+            text-decoration: none;
+            color: #3498db;
+            margin-left: 10px;
+            transition: color 0.3s ease;
+        }
+
+        ul li a:hover {
+            color: #2980b9;
+        }
+
+        /* Botão de criação */
+        .criar-tarefa {
+            display: inline-block;
+            margin: 20px auto;
+            text-align: center;
+            text-decoration: none;
+            padding: 10px 20px;
+            color: #fff;
+            background-color: #3498db;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+            width: fit-content;
+        }
+
+        .criar-tarefa:hover {
+            background-color: #2980b9;
+        }
+
+        /* Responsividade */
+        @media (max-width: 600px) {
+            ul li {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            ul li a {
+                margin: 5px 0 0;
+            }
+        }
+
+        
+    </style>
+</head>
+<body>
+    <h1>Lista de Tarefas</h1>
+    <ul>
+        {% for exit in exit_list %}
+        <li>{{ exit.title }} - 
+            <a href="{% url 'exit_update' exit.pk %}">Editar</a> | 
+            <a href="{% url 'exit_delete' exit.pk %}">Deletar</a>
+        </li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'exit_create' %}" class="criar-tarefa">Criar Nova Tarefa</a>
+</body>
+</html>
